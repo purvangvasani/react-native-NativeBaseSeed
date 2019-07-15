@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableNativeFeedback } from 'react-native';
+import { Platform, Text, TouchableOpacity } from 'react-native';
 import { Container, Header, Left, Button, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { variable } from '../../../Theme/variable';
@@ -12,18 +12,25 @@ class BlankScreen extends Component {
   }
 
   render() {
+    let color;
+    if(Platform.OS == 'ios'){
+      color = variable.cPrimary
+    }
+    else{
+      color = variable.cWhite
+    }
       return (
         <Container>
           <Header>
             <Left>
-                <TouchableNativeFeedback onPress={()=>this.props.navigation.navigate('Home')}>
-                    <Icon name="chevron-left" size={20} style={{color:variable.cWhite}}/>
-                </TouchableNativeFeedback>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Home')}>
+                    <Icon name="chevron-left" size={20} style={{color:color}}/>
+                </TouchableOpacity>
             </Left>
             <Body>
-              <Text style={{color: variable.cWhite, fontSize: variable.fontMedium, fontWeight: variable.fontWeightBold,}}>Blank Screen</Text>
+              <Text style={{color: color, fontSize: variable.fontMedium, fontWeight: variable.fontWeightBold,}}>Blank Screen</Text>
             </Body>
-            <Right />
+            <Right></Right>
           </Header>
         </Container>
       );

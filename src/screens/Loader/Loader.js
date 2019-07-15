@@ -21,13 +21,13 @@ class Loader extends Component {
             console.log('====================================');
             console.log(value);
             console.log('====================================');
-            if(JSON.parse(value).length == 0){
+            if(JSON.parse(value) == null){
                 console.log('====================================');
                 console.log('redirected');
                 console.log('====================================');
                 this.props.navigation.navigate('Login')
             }
-            if(JSON.parse(value).length != 0){
+            if(JSON.parse(value) != null){
                 console.log('====================================');
                 console.log('this.props.prod.length != 0: ', this.props.prod.length != 0);
                 console.log('====================================');

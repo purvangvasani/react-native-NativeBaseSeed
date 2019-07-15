@@ -54,7 +54,7 @@ export function validateNumber(number) {
 export function validatePassword(password) {
     if (isEmpty(password)) {
         if (password.length <= 4) {
-            return 'Password length should be greater than 4'
+            return 'Weak Password'
         }
         else {
             return true

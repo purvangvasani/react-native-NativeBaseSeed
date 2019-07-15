@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableNativeFeedback } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { variable } from '../../../Theme/variable';
-import { Container, Header, Left, Button, Body, Right } from 'native-base';
+import { Container, Header, Left, Button, Content, Right } from 'native-base';
 
 class ListScreen extends Component {
     render() {
+        let color;
+        if(Platform.OS == 'ios'){
+            color = variable.cPrimary
+        }
+        else{
+            color = variable.cWhite
+        }
         return (
-            <Container>
-                <Header>
-                    <Left>
-                        <TouchableNativeFeedback onPress={()=>this.props.navigation.navigate('Home')}>
-                            <Icon name="chevron-left" size={20} style={{color:variable.cWhite}}/>
-                        </TouchableNativeFeedback>
-                    </Left>
-                    <Body><Text style={{color: variable.cWhite, fontSize: variable.fontMedium, fontWeight: variable.fontWeightBold,}}>{this.props.navigation.state.params.item}</Text></Body>
-                    <Right />
-                </Header>
-            </Container>
+            <Header>
+                <Left>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Home')}>
+                        <Icon name="chevron-left" size={20} style={{color:color}}/>
+                    </TouchableOpacity>
+                </Left>
+                <Content>
+                    <Text style={{color: color, fontSize: variable.fontMedium, fontWeight: variable.fontWeightBold,}}>{this.props.navigation.state.params.item}</Text>
+                </Content>
+                <Right></Right>
+            </Header>
         );
     }
 }
